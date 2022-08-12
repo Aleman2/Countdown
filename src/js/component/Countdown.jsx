@@ -1,79 +1,74 @@
 import React from "react";
 import { useState, useEffect } from "react";
-//include images into your bundle
-import ReactDOM from "react-dom";
-import Card_1 from "./Card_1.jsx";
-import Home from "./Contador.jsx";
+import Card from "./Card.jsx";
+import Counter from "./Counter.jsx";
 
-//create your first component
 const CountDown = () => {
-  let a = "0";
+  let num = "0";
 
-  const [probar, setSetter] = useState(false);
-  const [temporizador, setTemporizador] = useState(0);
-  const [inter, setIntervalo] = useState();
+  const [setter, setSetter] = useState(false);
+  const [timer, setTimer] = useState(0);
+  const [inter, serInter] = useState();
   const [pause, setPause] = useState(true);
   const [clean, setClean] = useState(false);
-  const [contador, setContador] = useState(a.split(""));
+  const [counter, setCounter] = useState(num.split(""));
   const [time, setTime] = useState(0);
 
   useEffect(() => {
     if (!pause) {
-      setIntervalo(
+      serInter(
         setInterval(() => {
           setTime((time) => time - 1);
         }, 1000)
       );
-      console.log(inter);
     } else {
-      setIntervalo(clearInterval(inter));
+      serInter(clearInterval(inter));
     }
   }, [pause]);
 
   useEffect(() => {
-    setContador(String(time).split("").reverse());
+    setCounter(String(time).split("").reverse());
     if (time <= 0) {
       setPause(true);
-      setContador(a.split(""));
+      setCounter(num.split(""));
     }
   }, [time]);
 
   useEffect(() => {
     if (clean) {
-      console.log("a");
       setClean(false);
       setTime(0);
-      setContador(a.split(""));
+      setCounter(num.split(""));
     }
   }, [clean]);
 
   useEffect(() => {
-    if (probar) {
-      if (temporizador > 0) {
-        setTime(temporizador);
+    if (setter) {
+      if (timer > 0) {
+        setTime(timer);
       } else {
-        alert("ponga un numero mayor a 0");
+        alert("put a number greater than 0");
       }
     }
     setSetter(false);
-  }, [probar]);
+  }, [setter]);
 
   return (
     <>
-      <Home />
+      <Counter />
       <div className="container p-5 mt-5 bg-opacity-75 bg-dark">
         <div className="row row-cols-1 row-cols-md-6 g-6">
-          <Card_1 number={contador.length > 5 ? contador[5] : "0"} />
-          <Card_1 number={contador.length > 4 ? contador[4] : "0"} />
-          <Card_1 number={contador.length > 3 ? contador[3] : "0"} />
-          <Card_1 number={contador.length > 2 ? contador[2] : "0"} />
-          <Card_1 number={contador.length > 1 ? contador[1] : "0"} />
-          <Card_1 number={contador.length > 0 ? contador[0] : "0"} />
+          <Card number={counter.length > 5 ? counter[5] : "0"} />
+          <Card number={counter.length > 4 ? counter[4] : "0"} />
+          <Card number={counter.length > 3 ? counter[3] : "0"} />
+          <Card number={counter.length > 2 ? counter[2] : "0"} />
+          <Card number={counter.length > 1 ? counter[1] : "0"} />
+          <Card number={counter.length > 0 ? counter[0] : "0"} />
         </div>
         <button onClick={() => setClean(true)}>limpiar</button>
         <button onClick={() => setPause(true)}>Pausar</button>
         <button onClick={() => setPause(false)}>Continuar</button>
-        <input onChange={(event) => setTemporizador(event.target.value)} />
+        <input onChange={(event) => setTimer(event.target.value)} />
         <button onClick={() => setSetter(true)}>Set Time</button>
       </div>
     </>

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 
 
-const Card_1 = (props) => {
+const Card = (props) => {
 	
     
     return (
@@ -13,8 +13,8 @@ const Card_1 = (props) => {
       </div>
     );
 };
-Card_1.propTypes = {
+Card.propTypes = {
     number: PropTypes.string
 }
 
-export default Card_1;
+export default Card;
