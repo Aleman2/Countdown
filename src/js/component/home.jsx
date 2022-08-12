@@ -1,26 +1,27 @@
-import React from "react";
-
+/*import React from "react";
+import { useState, useEffect } from "react";
 //include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+import ReactDOM from "react-dom";
 
 //create your first component
 const Home = () => {
-	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
-	);
+	
+  let secs = 0;
+  function ajustar() {
+    if (secs == 6) {
+      secs = 0;
+      console.log("ding dong");
+    } else {
+      secs += 1;
+    }
+    ReactDOM.render(<p>00:0{secs}</p>, document.querySelector("#app"));
+  }
+  let a = setInterval(() => {
+    ajustar();
+  }, 1000);
+
+  ReactDOM.render(<p>00:00</p>, document.querySelector("#app"));
 };
 
 export default Home;
+*/
